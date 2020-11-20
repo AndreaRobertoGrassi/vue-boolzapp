@@ -6,7 +6,7 @@
 }
 i{
   font-size: 20px;
-  color: white;
+  color: grey;
 }
 .padding-left-bar{
   padding-left: 10px;
@@ -19,14 +19,14 @@ i{
   position: relative;
 }
 #background-app > .green{
-  height: 200px;
+  height: 150px;
   width: 100%;
-  background-color: rgba(17, 91, 52, 0.74);
+  background-color: rgba(17, 91, 52, 0.8);
 }
-#background-app>.black{
+#background-app>.white{
   height: calc(100vh - 200px);
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(186, 186, 186, 0.8);
 }
 
 /* CONTAINER */
@@ -47,16 +47,14 @@ i{
 
 /* left-bar */
 #left-bar{
-  display: flex;
-  flex-direction: column;
   width: 400px;
   height: 100%;
+  background-color: white;
 }
 /* my-profile */
 #left-bar .my-profile{
   display: flex;
   justify-content: space-between;
-  background-color: rgba(38, 73, 158, 0.75);
   min-height: 70px;
   padding: 0 7px;
 }
@@ -99,4 +97,46 @@ i{
 }
 #left-bar .icon-notify i{
   color: lightblue;
+}
+/* input */
+#left-bar .search{
+  padding: 10px 5px;
+  position: relative;
+}
+#left-bar input{
+  width: 100%;
+  height: 40px;
+  padding-left: 60px;
+}
+#left-bar .search i{
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+}
+
+/* profiles-chats */
+#left-bar .chat-friends{
+  min-height: 70px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+#left-bar .chat-friends .img-nome-chat{
+  display: flex;
+  flex-grow: 1;
+}
+
+#left-bar .img-nome-chat img{
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+  align-self: center;
+  margin-left: 20px;
+}
+#left-bar .img-nome-chat .utente-chat{
+  margin: 10px 0 0 15px;
+}
+#left-bar .chat-friends .clock{
+  margin: 10px 10px 0 0;
 }
