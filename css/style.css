@@ -1,0 +1,102 @@
+/* REGOLE GENERALI */
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+i{
+  font-size: 20px;
+  color: white;
+}
+.padding-left-bar{
+  padding-left: 10px;
+  padding-top: 10px;
+}
+/* SFONDO APP */
+#background-app{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#background-app > .green{
+  height: 200px;
+  width: 100%;
+  background-color: rgba(17, 91, 52, 0.74);
+}
+#background-app>.black{
+  height: calc(100vh - 200px);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* CONTAINER */
+#container{
+  position: absolute;
+  width: 70%;
+  height: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+#container>.page{
+  flex-grow: 1;
+  height: 100%;
+  background-color: yellow;
+}
+
+/* left-bar */
+#left-bar{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 100%;
+}
+/* my-profile */
+#left-bar .my-profile{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(38, 73, 158, 0.75);
+  min-height: 70px;
+  padding: 0 7px;
+}
+#left-bar .my-profile .img-nome{
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+#left-bar .img-nome img{
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+#left-bar .icon-my-profile{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100px;
+}
+
+/* notify */
+#left-bar .notify{
+  display: flex;
+  align-items: center;
+  background-color: lightblue;
+  min-height: 70px;
+  padding: 0 7px;
+}
+#left-bar .icon-notify{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 10px;
+
+}
+#left-bar .icon-notify i{
+  color: lightblue;
+}
