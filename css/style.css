@@ -8,14 +8,24 @@ i{
   font-size: 20px;
   color: grey;
 }
+i:hover{
+  cursor: pointer;
+}
+.nav-aside,.header-chat-utente,.write-message{
+  background-color: rgb(248, 248, 248);
+}
 .img-nome img{
   width: 50px;
   height: auto;
   border-radius: 50%;
+  margin-right: 10px;
 }
-.padding-left-bar{
-  padding-left: 10px;
-  padding-top: 10px;
+input{
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+input:focus{
+  border: 2px solid green;
 }
 /* SFONDO APP */
 #background-app{
@@ -26,19 +36,19 @@ i{
 #background-app > .green{
   height: 150px;
   width: 100%;
-  background-color: rgba(17, 91, 52, 0.8);
+  background-color: rgb(86, 195, 148);
 }
 #background-app>.white{
   height: calc(100vh - 150px);
   width: 100%;
-  background-color: rgba(241, 241, 241, 0.8);
+  background-color: rgb(229, 217, 189);
 }
 
 /* CONTAINER */
 #container{
   position: absolute;
   width: 80%;
-  height: 95%;
+  height: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -50,6 +60,8 @@ i{
   width: 400px;
   height: 100%;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 /* nav-aside */
@@ -59,7 +71,6 @@ i{
   justify-content: space-between;
   height: 70px;
   padding: 0 15px 0 10px;
-  background-color: rgb(222, 222, 222);
 }
 .nav-aside .my-profile .img-nome{
   display: flex;
@@ -97,11 +108,11 @@ i{
 }
 /* input */
 .nav-aside .search{
-  padding: 5px;
+  padding: 8px;
   position: relative;
-  background-color: rgb(222, 222, 222);
+  border-bottom: 1px solid black;
 }
-.nav-aside input{
+.nav-aside .input-search{
   width: 100%;
   height: 40px;
   padding-left: 60px;
@@ -115,7 +126,7 @@ i{
 
 /* profiles-chats */
 .profiles-chats{
-  max-height: 400px;
+  height: 500px;
   overflow:auto;
 }
 .profiles-chats .chat-friends{
@@ -123,6 +134,9 @@ i{
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
+}
+.profiles-chats .chat-friends:hover{
+  background-color: rgb(235, 235, 235);
 }
 .profiles-chats .chat-friends .img-nome-chat{
   display: flex;
@@ -142,16 +156,19 @@ i{
   margin: 10px 10px 0 0;
 }
 
+
 /* PAGE */
 .page{
   flex-grow: 1;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+/* header-chat-utente */
 .page .header-chat-utente{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(222, 222, 222);
   width: 100%;
   height: 70px;
   border-left: 1px solid black;
@@ -165,4 +182,52 @@ i{
   display: flex;
   justify-content: space-between;
   width: 100px;
+}
+
+/* page message */
+.page .message-page{
+  background-image: url('../img/mine.jpg');
+  flex-grow: 1;
+  padding: 50px;
+  overflow: auto;
+}
+.page .sent{
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+.page .received{
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px 0;
+}
+.page .format{
+  padding: 8px;
+  max-width: 40%;
+  border-radius: 8px;
+}
+.page .msg-green{
+  background-color: rgb(193, 237, 178);
+}
+.page .msg-white{
+  background-color: rgb(255, 255, 255);
+}
+
+
+/* input message */
+.page .write-message{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 70px;
+}
+.page .write-message i{
+  font-size: 25px;
+}
+.page .write-message .input-messaggio{
+  width: 650px;
+  height: 40px;
+  padding: 0 10px;
 }
