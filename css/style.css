@@ -27,6 +27,10 @@ input{
 input:focus{
   border: 2px solid green;
 }
+.clock{
+  font-size: 14px;
+  color: grey;
+}
 /* SFONDO APP */
 #background-app{
   display: flex;
@@ -207,7 +211,7 @@ input:focus{
   border-radius: 8px;
 }
 .page .msg-green{
-  background-color: rgb(193, 237, 178);
+  background-color: rgb(165, 237, 140);
 }
 .page .msg-white{
   background-color: rgb(255, 255, 255);
