@@ -61,7 +61,7 @@ input:focus{
 
 /* left-bar */
 #left-bar{
-  width: 400px;
+  width: 33%;
   height: 100%;
   background-color: white;
   display: flex;
@@ -79,7 +79,7 @@ input:focus{
 .nav-aside .my-profile .img-nome{
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 .nav-aside .icon-my-profile{
   display: flex;
@@ -144,7 +144,8 @@ input:focus{
 }
 .profiles-chats .chat-friends .img-nome-chat{
   display: flex;
-  flex-grow: 1;
+  margin-right: 30px;
+  width: 60%;
 }
 .profiles-chats .img-nome-chat img{
   width: 50px;
@@ -163,6 +164,7 @@ input:focus{
 
 /* PAGE */
 .page{
+  width: calc(100% - 400px);
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -231,7 +233,28 @@ input:focus{
   font-size: 25px;
 }
 .page .write-message .input-messaggio{
-  width: 650px;
+  width: 80%;
   height: 40px;
   padding: 0 10px;
+}
+
+
+
+
+
+
+/* MEDIAQUERY */
+@media all and (max-width:1245px){
+  .profiles-chats .chat-friends .img-nome-chat{
+    width: 90%;
+  }
+  .profiles-chats .chat-friends .clock{
+    margin: 10px 0 0 0;
+  }
+}
+
+@media all and (max-width:1070px){
+  .profiles-chats .chat-friends .clock{
+    display: none;
+  }
 }
