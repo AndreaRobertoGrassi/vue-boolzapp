@@ -28,7 +28,7 @@ input{
 input:focus{
   border: 2px solid green;
 }
-.clock,.last-msg{
+.last-seen,.last-msg{
   font-size: 14px;
   color: grey;
 }
@@ -136,7 +136,7 @@ input:focus{
   justify-content: space-between;
 }
 .profiles-chats .active{
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(202, 241, 176);
 }
 .profiles-chats .chat-friends:hover{
   background-color: rgb(235, 235, 235);
@@ -156,7 +156,7 @@ input:focus{
 .profiles-chats .img-nome-chat .text{
   margin: 10px 0 0 15px;
 }
-.profiles-chats .chat-friends .clock{
+.profiles-chats .chat-friends .last-seen{
   margin: 10px 10px 0 0;
 }
 
@@ -211,12 +211,21 @@ input:focus{
   max-width: 40%;
   border-radius: 8px;
   margin: 10px 0;
+  min-width: 15%;
 }
 #page .msg-green{
-  background-color: rgb(165, 237, 140);
+  background-color: rgb(202, 241, 176);
 }
 #page .msg-white{
   background-color: rgb(255, 255, 255);
+}
+#page .orario-msg{
+  bottom: 3px;
+  right: 3px;
+  font-size: 10px;
+  color: rgb(120, 112, 112);
+  text-align: right;
+  margin: 10px 0  0 20px;
 }
 
 
@@ -248,13 +257,13 @@ input:focus{
   .profiles-chats .chat-friends .img-nome-chat{
     width: 90%;
   }
-  .profiles-chats .chat-friends .clock{
+  .profiles-chats .chat-friends .last-seen{
     margin: 10px 0 0 0;
   }
 }
 
 @media all and (max-width:1070px){
-  .profiles-chats .chat-friends .clock{
+  .profiles-chats .chat-friends .last-seen{
     display: none;
   }
 }

@@ -76,7 +76,7 @@
                 </div>
               </div>
 
-              <div class="clock">{{item.clock}}</div>
+              <div class="last-seen">{{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].lastSeen}}</div>
 
             </div>
 
@@ -91,10 +91,10 @@
 
             <div class="img-nome">
               <img :src="contact[contattoAttivo].img" alt="">
-              <div class="nome-utente-clock">
+              <div class="nome-utente-lastseen">
                 <span>{{contact[contattoAttivo].name}}</span>
                 <br>
-                <span class="clock">{{contact[contattoAttivo].clock}}</span>
+                <span class="last-seen">{{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].lastSeen}}</span>
               </div>
             </div>
 
@@ -111,6 +111,9 @@
             <div v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.users=='me')?'sent':'received'">
               <div :class="(item.users=='me')?'msg-green format':'msg-white format'">
                 {{item.msg}}
+                <div class="orario-msg">
+                  {{item.lastSeen}}
+                </div>
               </div>
             </div>
 
