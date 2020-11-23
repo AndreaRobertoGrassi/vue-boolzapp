@@ -71,12 +71,13 @@
                 <div class="text">
                   <div class="utente-chat">{{item.name}}</div>
                   <div class="last-msg">
-                    {{item.lastMsg}}
+                    {{item.chat[item.chat.length-1].msg}}
                   </div>
                 </div>
-
               </div>
+
               <div class="clock">{{item.clock}}</div>
+
             </div>
 
           </div>
@@ -84,7 +85,7 @@
         </div>
 
         <!-- corpo principale -->
-        <div class="page">
+        <div id="page">
           <!-- header-chat-utente -->
           <div class="header-chat-utente">
 
@@ -93,7 +94,7 @@
               <div class="nome-utente-clock">
                 <span>{{contact[contattoAttivo].name}}</span>
                 <br>
-                <span>{{contact[contattoAttivo].lastMsg}}</span>
+                <span class="clock">{{contact[contattoAttivo].clock}}</span>
               </div>
             </div>
 
@@ -106,29 +107,10 @@
           </div>
 
           <!-- parte dei messaggi -->
-          <div class="message-page">
-
-            <div class="sent">
-              <div class="msg-green format">
-                fdsfdsf fjsfhuhfusdhfsdh dshfuhsdfhsdfhis dfshfhd
-              </div>
-            </div>
-
-            <div class="sent">
-              <div class="msg-green format">
-                dfdsfdff
-              </div>
-            </div>
-
-            <div class="received">
-              <div class="msg-white format">
-                dfsdfsdf
-              </div>
-            </div>
-
-            <div class="sent">
-              <div class="msg-green format">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          <div class="message-page" >
+            <div v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.users=='me')?'sent':'received'">
+              <div :class="(item.users=='me')?'msg-green format':'msg-white format'">
+                {{item.msg}}
               </div>
             </div>
 

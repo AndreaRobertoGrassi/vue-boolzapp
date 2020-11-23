@@ -162,7 +162,7 @@ input:focus{
 
 
 /* PAGE */
-.page{
+#page{
   width: calc(100% - 400px);
   flex-grow: 1;
   height: 100%;
@@ -170,7 +170,7 @@ input:focus{
   flex-direction: column;
 }
 /* header-chat-utente */
-.page .header-chat-utente{
+#page .header-chat-utente{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -179,18 +179,18 @@ input:focus{
   border-left: 1px solid black;
   padding: 0 15px 0 10px;
 }
-.page .header-chat-utente .img-nome{
+#page .header-chat-utente .img-nome{
   display: flex;
   align-items: center;
 }
-.page .icon-header-chat-utente{
+#page .icon-header-chat-utente{
   display: flex;
   justify-content: space-between;
   width: 100px;
 }
 
 /* page message */
-.page .message-page{
+#page .message-page{
   display: flex;
   flex-direction: column;
   background-image: url('../img/mine.jpg');
@@ -198,31 +198,30 @@ input:focus{
   padding: 50px;
   overflow: auto;
 }
-.page .sent{
+#page .sent{
   display: flex;
   justify-content: flex-end;
-  margin: 10px 0;
 }
-.page .received{
+#page .received{
   display: flex;
   justify-content: flex-start;
 }
-.page .format{
+#page .format{
   padding: 8px;
   max-width: 40%;
   border-radius: 8px;
   margin: 10px 0;
 }
-.page .msg-green{
+#page .msg-green{
   background-color: rgb(165, 237, 140);
 }
-.page .msg-white{
+#page .msg-white{
   background-color: rgb(255, 255, 255);
 }
 
 
 /* input message */
-.page .write-message{
+#page .write-message{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -230,10 +229,10 @@ input:focus{
   width: 100%;
   min-height: 70px;
 }
-.page .write-message i{
+#page .write-message i{
   font-size: 25px;
 }
-.page .write-message .input-messaggio{
+#page .write-message .input-messaggio{
   width: 80%;
   height: 40px;
   padding: 0 10px;
