@@ -33,7 +33,7 @@
             <div class="my-profile">
               <div class="img-nome">
                 <img src="img/avatar_2.jpg" alt="">
-                <div>Nome utente</div>
+                <div>Andrea</div>
               </div>
               <div class="icon-my-profile">
                 <i class="fas fa-circle-notch"></i>
@@ -65,44 +65,18 @@
           <!-- profile chat -->
           <div class="profiles-chats">
 
-            <div class="chat-friends">
+            <div class="chat-friends" v-for="(item,i) in contact" @click='chatAttiva(i)' :class="(contattoAttivo==i)?'active':'' ">
               <div class="img-nome-chat">
-                <img src="img/avatar_1.jpg" alt="">
+                <img :src="item.img" alt="">
                 <div class="text">
-                  <div class="utente-chat">Nome Utente</div>
+                  <div class="utente-chat">{{item.name}}</div>
                   <div class="last-msg">
-                    ciao
+                    {{item.lastMsg}}
                   </div>
                 </div>
 
               </div>
-              <div class="clock">20-11-2020 10:10:00</div>
-            </div>
-
-            <div class="chat-friends">
-              <div class="img-nome-chat">
-                <img src="img/avatar_1.jpg" alt="">
-                <div class="text">
-                  <div class="utente-chat">Nome Utente</div>
-                  <div class="last-msg">
-                    ciao
-                  </div>
-                </div>
-              </div>
-              <div class="clock">20-11-2020 10:10:00</div>
-            </div>
-
-            <div class="chat-friends">
-              <div class="img-nome-chat">
-                <img src="img/avatar_1.jpg" alt="">
-                <div class="text">
-                  <div class="utente-chat">Nome Utente</div>
-                  <div class="last-msg">
-                    ciao
-                  </div>
-                </div>
-              </div>
-              <div class="clock">20-11-2020 10:10:00</div>
+              <div class="clock">{{item.clock}}</div>
             </div>
 
           </div>
@@ -112,14 +86,14 @@
         <!-- corpo principale -->
         <div class="page">
           <!-- header-chat-utente -->
-          <div class="headerChatUtente">
+          <div class="header-chat-utente">
 
             <div class="img-nome">
-              <img src="img/avatar_1.jpg" alt="">
+              <img :src="contact[contattoAttivo].img" alt="">
               <div class="nome-utente-clock">
-                <span :class="users"></span>
+                <span>{{contact[contattoAttivo].name}}</span>
                 <br>
-                <span :class="ultimoAccesso"></span>
+                <span>{{contact[contattoAttivo].lastMsg}}</span>
               </div>
             </div>
 
@@ -172,8 +146,7 @@
         </div>
 
       </div>
-
-      <script src="js/script.js" charset="utf-8"></script>
     </div>
+    <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>
