@@ -10,7 +10,6 @@ var app= new Vue({
       {
         img:'img/avatar_10.jpg',
         name:'Alessia',
-        chatIndex:0,
         chat:[
           {
             msg:'ciao come stai',
