@@ -76,7 +76,7 @@
                 </div>
               </div>
 
-              <div class="last-seen">{{item.chat[item.chat.length-1].lastSeen}}</div>
+              <div class="ora">{{item.chat[item.chat.length-1].ora}}</div>
 
             </div>
 
@@ -94,7 +94,7 @@
               <div class="nome-utente-lastseen">
                 <span>{{contact[contattoAttivo].name}}</span>
                 <br>
-                <span class="last-seen">{{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].lastSeen}}</span>
+                <span class="last-seen">{{contact[contattoAttivo].lastSeen}}</span>
               </div>
             </div>
 
@@ -112,7 +112,7 @@
               <div :class="(item.users=='me')?'msg-green format':'msg-white format'">
                 {{item.msg}}
                 <div class="orario-msg">
-                  {{item.lastSeen}}
+                  {{item.ora}}
                 </div>
               </div>
             </div>
@@ -131,7 +131,10 @@
         </div>
 
       </div>
+      
     </div>
+
+    <!-- script -->
     <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>

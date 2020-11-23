@@ -28,7 +28,7 @@ input{
 input:focus{
   border: 2px solid green;
 }
-.last-seen,.last-msg{
+.ora,.last-seen,.last-msg{
   font-size: 14px;
   color: grey;
 }
@@ -156,7 +156,7 @@ input:focus{
 .profiles-chats .img-nome-chat .text{
   margin: 10px 0 0 15px;
 }
-.profiles-chats .chat-friends .last-seen{
+.profiles-chats .chat-friends .ora{
   margin: 10px 10px 0 0;
 }
 
