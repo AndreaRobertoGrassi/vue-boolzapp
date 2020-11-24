@@ -10,7 +10,6 @@ var app= new Vue({
       {
         img:'img/avatar_10.jpg',
         name:'Alessia',
-        lastSeen:'Ultimo accesso oggi alle 23:15:00',
         chat:[
           {
             msg:'ciao come stai',
@@ -24,7 +23,7 @@ var app= new Vue({
           },
           {
             msg:'ok',
-            users:'me',
+            users:'you',
             ora:'23-11-2020 18:10:00'
           }
         ]
@@ -34,7 +33,6 @@ var app= new Vue({
       {
         img:'img/avatar_7.jpg',
         name:'Marco',
-        lastSeen:'Ultimo accesso oggi alle 15:40:00',
         chat:[
           {
             msg:'ciao ciao',
@@ -58,7 +56,6 @@ var app= new Vue({
       {
         img:'img/avatar_3.jpg',
         name:'Luca',
-        lastSeen:'Ultimo accesso ieri alle 17:20:00',
         chat:[
           {
             msg:'dsjkjdkas',
@@ -77,7 +74,7 @@ var app= new Vue({
           },
           {
             msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
-            users:'me',
+            users:'you',
             ora:'20-11-2020 16:20:00'
           }
         ]
@@ -87,7 +84,6 @@ var app= new Vue({
       {
         img:'img/avatar_4.jpg',
         name:'Federico',
-        lastSeen:'Ultimo accesso oggi alle 12:50:00',
         chat:[
           {
             msg:'ciao ciao',
