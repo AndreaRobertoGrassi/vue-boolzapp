@@ -163,9 +163,12 @@ var app= new Vue({
 
     // funzione per riceve una risposta automatica
     rispostaAuto: function() {
+
+      let arrayRisposte=['ok','forse','si','non lo so'];
+      let stringa=arrayRisposte[Math.floor(Math.random()*arrayRisposte.length)];
       // creo il nuovo oggetto da pushare
       let nuovoMessaggio = {
-        msg: "Ok",
+        msg: stringa,
         data: this.time(),
         stato: 'ricevuto'
       }
