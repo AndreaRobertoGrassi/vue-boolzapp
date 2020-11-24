@@ -13,22 +13,24 @@ var app= new Vue({
       {
         img:'img/avatar_10.jpg',
         name:'Alessia',
+        libero:true,
         chat:[
-          {
-            msg:'ciaoo',
-            stato:'inviato',
-            data:'23-11-2020 17:57:00'
-          },
-          {
-            msg:'no',
-            stato:'ricevuto',
-            data:'23-11-2020 18:03:00'
-          },
-          {
-            msg:'forse',
-            stato:'ricevuto',
-            data:'23-11-2020 18:10:00'
-          }
+          {}
+          // {
+          //   msg:'ciaoo',
+          //   stato:'inviato',
+          //   data:'23-11-2020 17:57:00'
+          // },
+          // {
+          //   msg:'no',
+          //   stato:'ricevuto',
+          //   data:'23-11-2020 18:03:00'
+          // },
+          // {
+          //   msg:'forse',
+          //   stato:'ricevuto',
+          //   data:'23-11-2020 18:10:00'
+          // }
         ]
       },
 
@@ -36,22 +38,24 @@ var app= new Vue({
       {
         img:'img/avatar_7.jpg',
         name:'Marco',
+        libero:true,
         chat:[
-          {
-            msg:'ciao ciao',
-            stato:'inviato',
-            data:'22-11-2020 10:12:00'
-          },
-          {
-            msg:'come va',
-            stato:'inviato',
-            data:'22-11-2020 10:14:00'
-          },
-          {
-            msg:'bene',
-            stato:'ricevuto',
-            data:'22-11-2020 10:20:00'
-          }
+          {}
+          // {
+          //   msg:'ciao ciao',
+          //   stato:'inviato',
+          //   data:'22-11-2020 10:12:00'
+          // },
+          // {
+          //   msg:'come va',
+          //   stato:'inviato',
+          //   data:'22-11-2020 10:14:00'
+          // },
+          // {
+          //   msg:'bene',
+          //   stato:'ricevuto',
+          //   data:'22-11-2020 10:20:00'
+          // }
         ]
       },
 
@@ -59,27 +63,29 @@ var app= new Vue({
       {
         img:'img/avatar_3.jpg',
         name:'Luca',
+        libero:true,
         chat:[
-          {
-            msg:'dsjkjdkas',
-            stato:'inviato',
-            data:'20-11-2020 16:18:00'
-          },
-          {
-            msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
-            stato:'inviato',
-            data:'20-11-2020 16:19:00'
-          },
-          {
-            msg:'bene',
-            stato:'ricevuto',
-            data:'20-11-2020 16:19:00'
-          },
-          {
-            msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
-            stato:'ricevuto',
-            data:'20-11-2020 16:20:00'
-          }
+          {}
+          // {
+          //   msg:'dsjkjdkas',
+          //   stato:'inviato',
+          //   data:'20-11-2020 16:18:00'
+          // },
+          // {
+          //   msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
+          //   stato:'inviato',
+          //   data:'20-11-2020 16:19:00'
+          // },
+          // {
+          //   msg:'bene',
+          //   stato:'ricevuto',
+          //   data:'20-11-2020 16:19:00'
+          // },
+          // {
+          //   msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
+          //   stato:'ricevuto',
+          //   data:'20-11-2020 16:20:00'
+          // }
         ]
       },
 
@@ -87,22 +93,24 @@ var app= new Vue({
       {
         img:'img/avatar_4.jpg',
         name:'Federico',
+        libero:true,
         chat:[
-          {
-            msg:'ciao ciao',
-            stato:'inviato',
-            data:'18-11-2020 10:18:00'
-          },
-          {
-            msg:'come va',
-            stato:'inviato',
-            data:'18-11-2020 10:18:00'
-          },
-          {
-            msg:'bene jdhfjhsd dfhjdhfjf sdhfjsdf',
-            stato:'ricevuto',
-            data:'18-11-2020 10:20:00'
-          }
+          {}
+          // {
+          //   msg:'ciao ciao',
+          //   stato:'inviato',
+          //   data:'18-11-2020 10:18:00'
+          // },
+          // {
+          //   msg:'come va',
+          //   stato:'inviato',
+          //   data:'18-11-2020 10:18:00'
+          // },
+          // {
+          //   msg:'bene jdhfjhsd dfhjdhfjf sdhfjsdf',
+          //   stato:'ricevuto',
+          //   data:'18-11-2020 10:20:00'
+          // }
         ]
       }
 
@@ -123,6 +131,10 @@ var app= new Vue({
     addMsg: function() {
       // controllo che abbia scritto qualcosa
       if (this.messaggioScritto != "") {
+        if (this.contact[this.contattoAttivo].libero==true) {
+          this.contact[this.contattoAttivo].libero=false;
+          this.contact[this.contattoAttivo].chat.pop({});
+        }
         // creo il nuovo oggetto nuovoMessaggio da pushare nell'array chat
         let nuovoMessaggio = {
           msg: this.messaggioScritto,

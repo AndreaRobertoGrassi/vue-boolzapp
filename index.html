@@ -70,13 +70,13 @@
                 <img :src="item.img" alt="">
                 <div class="text">
                   <div class="utente-chat">{{item.name}}</div>
-                  <div class="last-msg">
+                  <div class="last-msg" v-if="contact[contattoAttivo].libero==false">
                     {{item.chat[item.chat.length-1].msg}}
                   </div>
                 </div>
               </div>
 
-              <div class="ora">{{item.chat[item.chat.length-1].data}}</div>
+              <div class="ora" v-if="contact[contattoAttivo].libero==false">{{item.chat[item.chat.length-1].data}}</div>
 
             </div>
 
@@ -94,7 +94,7 @@
               <div class="nome-utente-lastseen">
                 <span>{{contact[contattoAttivo].name}}</span>
                 <br>
-                <span class="last-seen">Ultimo accesso il {{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].data}}</span>
+                <span class="last-seen" v-if="contact[contattoAttivo].libero==false">Ultimo accesso il {{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].data}}</span>
               </div>
             </div>
 
@@ -108,7 +108,7 @@
 
           <!-- parte dei messaggi -->
           <div class="message-page">
-            <div v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.stato=='inviato')?'sent':'received'">
+            <div v-if="contact[contattoAttivo].libero==false" v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.stato=='inviato')?'sent':'received'">
               <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'">
                 {{item.msg}}
                 <div class="orario-msg">
@@ -123,7 +123,7 @@
           <!-- input messaggio -->
           <div class="write-message">
             <i class="far fa-smile"></i>
-            <input class="input-messaggio" v-model="messaggioScritto" v-on:keydown.enter="addMsg" type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <input class="input-messaggio" v-model="messaggioScritto" v-on:keydown.enter="addMsg" type="text" placeholder="Scrivi un messaggio">
             <i class="fas fa-microphone" @click="addMsg"></i>
 
           </div>
