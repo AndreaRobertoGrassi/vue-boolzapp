@@ -1,9 +1,11 @@
 var app= new Vue({
   el:'#app',
   data:{
-    // indice per scorrere l'array contact
-    contattoAttivo:0,
-    messaggioScritto:'',
+
+    fotoProfilo:'img/avatar_2.jpg',
+    name:'Andrea',
+    contattoAttivo:0,    // indice per scorrere l'array contact
+    messaggioScritto:'',  //input utente
     // contatti
     contact:[
 
@@ -11,7 +13,6 @@ var app= new Vue({
       {
         img:'img/avatar_10.jpg',
         name:'Alessia',
-        i:0,
         chat:[
           {
             msg:'ciaoo',
@@ -107,6 +108,8 @@ var app= new Vue({
 
     ]
   },
+
+
   methods:{
 
     // funzione per selezionare la chat cliccata
@@ -114,23 +117,7 @@ var app= new Vue({
       this.contattoAttivo=i;
     },
 
-    // funzione per avere data e ora
-    time: function() {
-      let date = new Date();
-      let year = date.getFullYear();
-      let month = date.getMonth() + 1;
-      let day = date.getDate();
-      let hours = this.addZero(date.getHours());
-      let minutes = this.addZero(date.getMinutes());
-      let seconds = this.addZero(date.getSeconds());
-      return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
-    },
-
-    // funzione per aggiungere lo 0 a ore, minuti e secondi se sono inferiori a 10 (altrimenti stampa 1:3:4 al posto di 01:03:04)
-    addZero: function(tempo) {
-      return tempo <10 ? "0" + tempo : tempo;
-    },
-
+    // funzione per aggiungere messaggio inserito dall'utente all chat
     addMsg: function() {
       // controllo che abbia scritto qualcosa
       if (this.messaggioScritto != "") {
@@ -145,9 +132,33 @@ var app= new Vue({
         this.messaggioScritto = "";
         // dopo un toto di secondi faccio partire la funzione di risposta automatica
         setTimeout(this.rispostaAuto, (Math.floor(Math.random()*5)+1)*1000);
+        setTimeout(this.scrollDown, 5);
+
       }
     },
 
+    // funzione per avere data e ora
+    time: function() {
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+      if (hours<10) {
+        hours= "0" + hours;
+      }
+      if (minutes<10) {
+        minutes= "0" + minutes;
+      }
+      if (seconds<10) {
+        seconds= "0" + seconds;
+      }
+      return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+    },
+
+    // funzione per riceve una risposta automatica
     rispostaAuto: function() {
       // creo il nuovo oggetto da pushare
       let nuovoMessaggio = {
@@ -157,7 +168,15 @@ var app= new Vue({
       }
       // pusho l'oggetto nella chat attiva
       this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
-    }
+      setTimeout(this.scrollDown,5);
 
+    },
+
+    // scrollDown automatico
+    scrollDown:function() {
+      var container = document.querySelector(".message-page");
+      container.scrollTop = container.scrollHeight;
+    }
   }
+
 });

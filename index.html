@@ -32,8 +32,8 @@
             <!-- my profile -->
             <div class="my-profile">
               <div class="img-nome">
-                <img src="img/avatar_2.jpg" alt="">
-                <div>Andrea</div>
+                <img :src="fotoProfilo" alt="">
+                <div>{{name}}</div>
               </div>
               <div class="icon-my-profile">
                 <i class="fas fa-circle-notch"></i>
@@ -107,7 +107,7 @@
           </div>
 
           <!-- parte dei messaggi -->
-          <div class="message-page" >
+          <div class="message-page">
             <div v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.stato=='inviato')?'sent':'received'">
               <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'">
                 {{item.msg}}
