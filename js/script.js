@@ -3,6 +3,7 @@ var app= new Vue({
   data:{
     // indice per scorrere l'array contact
     contattoAttivo:0,
+    messaggioScritto:'',
     // contatti
     contact:[
 
@@ -10,21 +11,22 @@ var app= new Vue({
       {
         img:'img/avatar_10.jpg',
         name:'Alessia',
+        i:0,
         chat:[
           {
-            msg:'ciao come stai',
-            users:'me',
-            ora:'23-11-2020 17:57:00'
+            msg:'ciaoo',
+            stato:'inviato',
+            data:'23-11-2020 17:57:00'
           },
           {
-            msg:'tutto bene',
-            users:'you',
-            ora:'23-11-2020 18:03:00'
+            msg:'no',
+            stato:'ricevuto',
+            data:'23-11-2020 18:03:00'
           },
           {
-            msg:'ok',
-            users:'you',
-            ora:'23-11-2020 18:10:00'
+            msg:'forse',
+            stato:'ricevuto',
+            data:'23-11-2020 18:10:00'
           }
         ]
       },
@@ -36,18 +38,18 @@ var app= new Vue({
         chat:[
           {
             msg:'ciao ciao',
-            users:'me',
-            ora:'22-11-2020 10:12:00'
+            stato:'inviato',
+            data:'22-11-2020 10:12:00'
           },
           {
             msg:'come va',
-            users:'me',
-            ora:'22-11-2020 10:14:00'
+            stato:'inviato',
+            data:'22-11-2020 10:14:00'
           },
           {
             msg:'bene',
-            users:'you',
-            ora:'22-11-2020 10:20:00'
+            stato:'ricevuto',
+            data:'22-11-2020 10:20:00'
           }
         ]
       },
@@ -59,23 +61,23 @@ var app= new Vue({
         chat:[
           {
             msg:'dsjkjdkas',
-            users:'me',
-            ora:'20-11-2020 16:18:00'
+            stato:'inviato',
+            data:'20-11-2020 16:18:00'
           },
           {
             msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
-            users:'me',
-            ora:'20-11-2020 16:19:00'
+            stato:'inviato',
+            data:'20-11-2020 16:19:00'
           },
           {
             msg:'bene',
-            users:'you',
-            ora:'20-11-2020 16:19:00'
+            stato:'ricevuto',
+            data:'20-11-2020 16:19:00'
           },
           {
             msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
-            users:'you',
-            ora:'20-11-2020 16:20:00'
+            stato:'ricevuto',
+            data:'20-11-2020 16:20:00'
           }
         ]
       },
@@ -87,18 +89,18 @@ var app= new Vue({
         chat:[
           {
             msg:'ciao ciao',
-            users:'me',
-            ora:'18-11-2020 10:18:00'
+            stato:'inviato',
+            data:'18-11-2020 10:18:00'
           },
           {
             msg:'come va',
-            users:'me',
-            ora:'18-11-2020 10:18:00'
+            stato:'inviato',
+            data:'18-11-2020 10:18:00'
           },
           {
             msg:'bene jdhfjhsd dfhjdhfjf sdhfjsdf',
-            users:'you',
-            ora:'18-11-2020 10:20:00'
+            stato:'ricevuto',
+            data:'18-11-2020 10:20:00'
           }
         ]
       }
@@ -106,9 +108,56 @@ var app= new Vue({
     ]
   },
   methods:{
+
     // funzione per selezionare la chat cliccata
-    chatAttiva(i){
+    chatAttiva:function (i) {
       this.contattoAttivo=i;
+    },
+
+    // funzione per avere data e ora
+    time: function() {
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      let hours = this.addZero(date.getHours());
+      let minutes = this.addZero(date.getMinutes());
+      let seconds = this.addZero(date.getSeconds());
+      return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+    },
+
+    // funzione per aggiungere lo 0 a ore, minuti e secondi se sono inferiori a 10 (altrimenti stampa 1:3:4 al posto di 01:03:04)
+    addZero: function(tempo) {
+      return tempo <10 ? "0" + tempo : tempo;
+    },
+
+    addMsg: function() {
+      // controllo che abbia scritto qualcosa
+      if (this.messaggioScritto != "") {
+        // creo il nuovo oggetto nuovoMessaggio da pushare nell'array chat
+        let nuovoMessaggio = {
+          msg: this.messaggioScritto,
+          data: this.time(),
+          stato: 'inviato'
+        }
+        // pusho l'oggetto nella chat attiva e resetto l'input
+        this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
+        this.messaggioScritto = "";
+        // dopo un toto di secondi faccio partire la funzione di risposta automatica
+        setTimeout(this.rispostaAuto, (Math.floor(Math.random()*5)+1)*1000);
+      }
+    },
+
+    rispostaAuto: function() {
+      // creo il nuovo oggetto da pushare
+      let nuovoMessaggio = {
+        msg: "Ok",
+        data: this.time(),
+        stato: 'ricevuto'
+      }
+      // pusho l'oggetto nella chat attiva
+      this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
     }
+
   }
 });

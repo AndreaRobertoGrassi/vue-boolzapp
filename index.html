@@ -76,7 +76,7 @@
                 </div>
               </div>
 
-              <div class="ora">{{item.chat[item.chat.length-1].ora}}</div>
+              <div class="ora">{{item.chat[item.chat.length-1].data}}</div>
 
             </div>
 
@@ -94,7 +94,7 @@
               <div class="nome-utente-lastseen">
                 <span>{{contact[contattoAttivo].name}}</span>
                 <br>
-                <span class="last-seen">Ultimo accesso il {{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].ora}}</span>
+                <span class="last-seen">Ultimo accesso il {{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].data}}</span>
               </div>
             </div>
 
@@ -108,11 +108,11 @@
 
           <!-- parte dei messaggi -->
           <div class="message-page" >
-            <div v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.users=='me')?'sent':'received'">
-              <div :class="(item.users=='me')?'msg-green format':'msg-white format'">
+            <div v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.stato=='inviato')?'sent':'received'">
+              <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'">
                 {{item.msg}}
                 <div class="orario-msg">
-                  {{item.ora}}
+                  {{item.data}}
                 </div>
               </div>
             </div>
@@ -123,8 +123,8 @@
           <!-- input messaggio -->
           <div class="write-message">
             <i class="far fa-smile"></i>
-            <input class="input-messaggio" type="text" name="" value="" placeholder="Scrivi un messaggio">
-            <i class="fas fa-microphone"></i>
+            <input class="input-messaggio" v-model="messaggioScritto" v-on:keydown.enter="addMsg" type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <i class="fas fa-microphone" @click="addMsg"></i>
 
           </div>
 
