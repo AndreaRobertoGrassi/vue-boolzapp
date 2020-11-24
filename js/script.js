@@ -115,6 +115,8 @@ var app= new Vue({
     // funzione per selezionare la chat cliccata
     chatAttiva:function (i) {
       this.contattoAttivo=i;
+      //scrollDown auto
+      setTimeout(this.scrollDown,1);
     },
 
     // funzione per aggiungere messaggio inserito dall'utente all chat
@@ -132,7 +134,8 @@ var app= new Vue({
         this.messaggioScritto = "";
         // dopo un toto di secondi faccio partire la funzione di risposta automatica
         setTimeout(this.rispostaAuto, (Math.floor(Math.random()*5)+1)*1000);
-        setTimeout(this.scrollDown, 5);
+        //scrollDown auto
+        setTimeout(this.scrollDown, 1);
 
       }
     },
@@ -168,7 +171,8 @@ var app= new Vue({
       }
       // pusho l'oggetto nella chat attiva
       this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
-      setTimeout(this.scrollDown,5);
+      //scrollDown auto
+      setTimeout(this.scrollDown,1);
 
     },
 
