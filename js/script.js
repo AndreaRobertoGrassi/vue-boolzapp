@@ -6,6 +6,7 @@ var app= new Vue({
     name:'Andrea',
     contattoAttivo:0,    // indice per scorrere l'array contact
     messaggioScritto:'',  //input utente
+    search:'',
     // contatti
     contact:[
 
@@ -16,24 +17,8 @@ var app= new Vue({
         libero:true,
         messaggioInviato:false,
         ultimoAccesso:'',
-        chat:[
-          {}
-          // {
-          //   msg:'ciaoo',
-          //   stato:'inviato',
-          //   data:'23-11-2020 17:57:00'
-          // },
-          // {
-          //   msg:'no',
-          //   stato:'ricevuto',
-          //   data:'23-11-2020 18:03:00'
-          // },
-          // {
-          //   msg:'forse',
-          //   stato:'ricevuto',
-          //   data:'23-11-2020 18:10:00'
-          // }
-        ]
+        display:true,
+        chat:[{}]
       },
 
       // utente2
@@ -43,24 +28,8 @@ var app= new Vue({
         libero:true,
         messaggioInviato:false,
         ultimoAccesso:'',
-        chat:[
-          {}
-          // {
-          //   msg:'ciao ciao',
-          //   stato:'inviato',
-          //   data:'22-11-2020 10:12:00'
-          // },
-          // {
-          //   msg:'come va',
-          //   stato:'inviato',
-          //   data:'22-11-2020 10:14:00'
-          // },
-          // {
-          //   msg:'bene',
-          //   stato:'ricevuto',
-          //   data:'22-11-2020 10:20:00'
-          // }
-        ]
+        display:true,
+        chat:[{}]
       },
 
       // utente3
@@ -70,29 +39,8 @@ var app= new Vue({
         libero:true,
         messaggioInviato:false,
         ultimoAccesso:'',
-        chat:[
-          {}
-          // {
-          //   msg:'dsjkjdkas',
-          //   stato:'inviato',
-          //   data:'20-11-2020 16:18:00'
-          // },
-          // {
-          //   msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
-          //   stato:'inviato',
-          //   data:'20-11-2020 16:19:00'
-          // },
-          // {
-          //   msg:'bene',
-          //   stato:'ricevuto',
-          //   data:'20-11-2020 16:19:00'
-          // },
-          // {
-          //   msg:'asdaksjd kasjdkasd djkj dsdjsajdasj',
-          //   stato:'ricevuto',
-          //   data:'20-11-2020 16:20:00'
-          // }
-        ]
+        display:true,
+        chat:[{}]
       },
 
       // utente4
@@ -102,33 +50,28 @@ var app= new Vue({
         libero:true,
         messaggioInviato:false,
         ultimoAccesso:'',
-        chat:[
-          {}
-          // {
-          //   msg:'ciao ciao',
-          //   stato:'inviato',
-          //   data:'18-11-2020 10:18:00'
-          // },
-          // {
-          //   msg:'come va',
-          //   stato:'inviato',
-          //   data:'18-11-2020 10:18:00'
-          // },
-          // {
-          //   msg:'bene jdhfjhsd dfhjdhfjf sdhfjsdf',
-          //   stato:'ricevuto',
-          //   data:'18-11-2020 10:20:00'
-          // }
-        ]
+        display:true,
+        chat:[{}]
       }
-
     ]
   },
 
 
   methods:{
+    
+    // funzione filtrare i contatti
+    inputSearch:function () {
+      this.contact.forEach(item => {
+        if(item.name.toLowerCase().includes(this.search.toLowerCase())){
+          item.display = true;
+        }else{
+          item.display = false;
+        };
+      });
+    },
+
     //ultimo accesso
-    last() {
+    last:function () {
       if (this.contact[this.contattoAttivo].libero==true) {
         this.contact[this.contattoAttivo].ultimoAccesso=this.time();
       }
@@ -141,8 +84,6 @@ var app= new Vue({
       //scrollDown auto
       setTimeout(this.scrollDown,1);
     },
-
-
 
     // funzione per aggiungere messaggio inserito dall'utente all chat
     addMsg: function() {

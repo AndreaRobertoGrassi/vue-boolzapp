@@ -55,7 +55,7 @@
 
             <!-- input search -->
             <div class="search">
-              <input class="input-search" type="text" name="" value="" placeholder="Cerca o inizia una nuova chat" >
+              <input class="input-search" @keyup="inputSearch()" v-model="search" type="text" placeholder="Cerca o inizia una nuova chat" >
               <i class="fas fa-search"></i>
             </div>
 
@@ -65,7 +65,7 @@
           <!-- profile chat -->
           <div class="profiles-chats">
 
-            <div class="chat-friends" v-for="(item,i) in contact" @click='chatAttiva(i)' :class="(contattoAttivo==i)?'active':'' ">
+            <div class="chat-friends" v-show="item.display" v-for="(item,i) in contact" @click='chatAttiva(i)' :class="(contattoAttivo==i)?'active':'' ">
               <div class="img-nome-chat">
                 <img :src="item.img" alt="">
                 <div class="text">

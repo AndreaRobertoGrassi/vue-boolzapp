@@ -23,7 +23,6 @@ i:hover{
 input{
   border: 1px solid grey;
   border-radius: 20px;
-  border: 0;
 }
 input:focus{
   border: 2px solid green;
