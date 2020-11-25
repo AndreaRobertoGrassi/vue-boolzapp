@@ -94,7 +94,8 @@
               <div class="nome-utente-lastseen">
                 <span>{{contact[contattoAttivo].name}}</span>
                 <br>
-                <span class="last-seen" v-if="contact[contattoAttivo].libero==false">Ultimo accesso il {{contact[contattoAttivo].chat[contact[contattoAttivo].chat.length-1].data}}</span>
+                <span class="last-seen" v-if="contact[contattoAttivo].occupato==false" :class="'active'?last():''">Ultimo accesso il {{contact[contattoAttivo].ultimoAccesso}}</span>
+                <span class="last-seen" v-if="contact[contattoAttivo].occupato==true">Online</span>
               </div>
             </div>
 
