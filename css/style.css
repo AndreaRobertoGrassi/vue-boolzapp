@@ -212,6 +212,10 @@ input:focus{
   margin: 10px 0;
   min-width: 15%;
 }
+#page .text-msg{
+  display: flex;
+  justify-content: space-between;
+}
 #page .msg-green{
   background-color: rgb(202, 241, 176);
 }
@@ -219,12 +223,32 @@ input:focus{
   background-color: rgb(255, 255, 255);
 }
 #page .orario-msg{
-  bottom: 3px;
-  right: 3px;
   font-size: 10px;
   color: rgb(120, 112, 112);
   text-align: right;
   margin: 10px 0  0 20px;
+  align-items: flex-end;
+}
+#page .dropdown{
+  display: none;
+  position: relative;
+}
+#page .format:hover .dropdown{
+  margin: 0 8px 0 15px;
+  display: block;
+  position: relative;
+}
+#page .tendina{
+  background-color: rgb(231, 85, 85);
+  position: absolute;
+  width: 100px;
+  padding: 10px;
+  font-size: 15px;
+  left: -40px;
+}
+#page .elimina{
+  text-align: center;
+  color: black;
 }
 
 

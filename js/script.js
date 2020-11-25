@@ -6,7 +6,10 @@ var app= new Vue({
     name:'Andrea',
     contattoAttivo:0,    // indice per scorrere l'array contact
     messaggioScritto:'',  //input utente
-    search:'',
+    search:'',  //input per filtrare i nomi contatti
+    elimina:'ELIMINA',  // elimina messaggio
+    online:'Online',    //utente online
+    ultimoMsgEliminato:false,   //se elimino tutti i messaggi mi resta comunque l'ultimo accesso
     // contatti
     contact:[
 
@@ -18,7 +21,9 @@ var app= new Vue({
         messaggioInviato:false,
         ultimoAccesso:'',
         display:true,
+        displayTendina:false,
         chat:[{}]
+
       },
 
       // utente2
@@ -29,7 +34,9 @@ var app= new Vue({
         messaggioInviato:false,
         ultimoAccesso:'',
         display:true,
+        displayTendina:false,
         chat:[{}]
+
       },
 
       // utente3
@@ -40,7 +47,9 @@ var app= new Vue({
         messaggioInviato:false,
         ultimoAccesso:'',
         display:true,
+        displayTendina:false,
         chat:[{}]
+
       },
 
       // utente4
@@ -51,6 +60,7 @@ var app= new Vue({
         messaggioInviato:false,
         ultimoAccesso:'',
         display:true,
+        displayTendina:false,
         chat:[{}]
       }
     ]
@@ -58,21 +68,21 @@ var app= new Vue({
 
 
   methods:{
-    
-    // funzione filtrare i contatti
+
+    // funzione per filtrare i nomi contatti
     inputSearch:function () {
       this.contact.forEach(item => {
         if(item.name.toLowerCase().includes(this.search.toLowerCase())){
-          item.display = true;
+          item.display=true;
         }else{
-          item.display = false;
+          item.display=false;
         };
       });
     },
 
     //ultimo accesso
     last:function () {
-      if (this.contact[this.contattoAttivo].libero==true) {
+      if (this.contact[this.contattoAttivo].libero==true && this.ultimoMsgEliminato==false) {
         this.contact[this.contattoAttivo].ultimoAccesso=this.time();
       }
     },
@@ -81,6 +91,7 @@ var app= new Vue({
     chatAttiva:function (i) {
       this.contattoAttivo=i;
       this.contact[this.contattoAttivo].messaggioInviato=false;
+      this.ultimoMsgEliminato=false;
       //scrollDown auto
       setTimeout(this.scrollDown,1);
     },
@@ -92,6 +103,7 @@ var app= new Vue({
         if (this.contact[this.contattoAttivo].libero==true) {  //se la mia chat è ancora vuota
           this.contact[this.contattoAttivo].libero=false;
           this.contact[this.contattoAttivo].chat.pop({});
+          this.ultimoMsgEliminato==false;
         }
         this.contact[this.contattoAttivo].messaggioInviato=true;
         // creo il nuovo oggetto nuovoMessaggio da pushare nell'array chat
@@ -151,6 +163,35 @@ var app= new Vue({
       //scrollDown auto
       setTimeout(this.scrollDown,1);
 
+    },
+
+    // funzione per eliminare il messaggio cliccato
+    removeMsg:function(i){
+      //rimuovo il messaggio selezionato
+      this.contact[this.contattoAttivo].chat.splice(i,1);
+      //se devo rimuovere l'utlimo messaggio rimasto
+      if (this.contact[this.contattoAttivo].chat.length==0) {
+        this.contact[this.contattoAttivo].chat.pop(i);
+        this.contact[this.contattoAttivo].libero=true;
+        this.ultimoMsgEliminato=true;
+      }
+    },
+
+    //funzione per il menu a tendina
+    dropDown:function () {
+      if (this.contact[this.contattoAttivo].displayTendina==false) {
+        this.contact[this.contattoAttivo].displayTendina=true;
+      }else {
+        this.contact[this.contattoAttivo].displayTendina=false;
+      }
+
+    },
+
+    //funzione per chiudere il menu a tendina quando esco col mouse
+    leave:function () {
+      if (this.contact[this.contattoAttivo].displayTendina==true) {
+        this.contact[this.contattoAttivo].displayTendina=false;
+      }
     },
 
     // scrollDown automatico

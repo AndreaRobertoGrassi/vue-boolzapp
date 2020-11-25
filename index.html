@@ -94,7 +94,7 @@
               <div class="nome-utente-lastseen">
                 <div>{{contact[contattoAttivo].name}}</div>
                 <span class="last-seen" v-if="contact[contattoAttivo].messaggioInviato==false" :class="'active'?last():''">Ultimo accesso il {{contact[contattoAttivo].ultimoAccesso}}</span>
-                <span class="last-seen" v-else-if="contact[contattoAttivo].messaggioInviato==true">Online</span>
+                <span class="last-seen" v-else>{{online}}</span>
               </div>
             </div>
 
@@ -108,9 +108,18 @@
 
           <!-- parte dei messaggi -->
           <div class="message-page">
-            <div v-if="contact[contattoAttivo].libero==false" v-for="(item,i) in contact[contattoAttivo].chat" :class="(item.stato=='inviato')?'sent':'received'">
+            <div v-if="contact[contattoAttivo].libero==false" v-for="(item,i) in contact[contattoAttivo].chat"  :class="(item.stato=='inviato')?'sent':'received'">
               <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'">
-                {{item.msg}}
+                <div class="text-msg">
+                  {{item.msg}}
+                  <i class="fas fa-angle-down dropdown" @mouseleave="leave()" @click="dropDown()">
+                    <div v-show="contact[contattoAttivo].displayTendina" class="tendina">
+                      <div class="elimina" @click='removeMsg(i,item)'>
+                        {{elimina}}
+                      </div>
+                    </div>
+                  </i>
+                </div>
                 <div class="orario-msg">
                   {{item.data}}
                 </div>
