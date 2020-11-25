@@ -14,7 +14,7 @@ var app= new Vue({
         img:'img/avatar_10.jpg',
         name:'Alessia',
         libero:true,
-        occupato:false,
+        messaggioInviato:false,
         ultimoAccesso:'',
         chat:[
           {}
@@ -41,7 +41,7 @@ var app= new Vue({
         img:'img/avatar_7.jpg',
         name:'Marco',
         libero:true,
-        occupato:false,
+        messaggioInviato:false,
         ultimoAccesso:'',
         chat:[
           {}
@@ -68,7 +68,7 @@ var app= new Vue({
         img:'img/avatar_3.jpg',
         name:'Luca',
         libero:true,
-        occupato:false,
+        messaggioInviato:false,
         ultimoAccesso:'',
         chat:[
           {}
@@ -100,7 +100,7 @@ var app= new Vue({
         img:'img/avatar_4.jpg',
         name:'Federico',
         libero:true,
-        occupato:false,
+        messaggioInviato:false,
         ultimoAccesso:'',
         chat:[
           {}
@@ -127,31 +127,32 @@ var app= new Vue({
 
 
   methods:{
-
-    // funzione per selezionare la chat cliccata
-    chatAttiva:function (i) {
-      this.contattoAttivo=i;
-      this.contact[this.contattoAttivo].occupato=false;
-      //scrollDown auto
-      setTimeout(this.scrollDown,1);
-    },
-
     //ultimo accesso
-    last:function () {
+    last() {
       if (this.contact[this.contattoAttivo].libero==true) {
         this.contact[this.contattoAttivo].ultimoAccesso=this.time();
       }
     },
 
+    // funzione per selezionare la chat cliccata
+    chatAttiva:function (i) {
+      this.contattoAttivo=i;
+      this.contact[this.contattoAttivo].messaggioInviato=false;
+      //scrollDown auto
+      setTimeout(this.scrollDown,1);
+    },
+
+
+
     // funzione per aggiungere messaggio inserito dall'utente all chat
     addMsg: function() {
       // controllo che abbia scritto qualcosa
       if (this.messaggioScritto != "") {
-        if (this.contact[this.contattoAttivo].libero==true) {
+        if (this.contact[this.contattoAttivo].libero==true) {  //se la mia chat è ancora vuota
           this.contact[this.contattoAttivo].libero=false;
           this.contact[this.contattoAttivo].chat.pop({});
         }
-        this.contact[this.contattoAttivo].occupato=true;
+        this.contact[this.contattoAttivo].messaggioInviato=true;
         // creo il nuovo oggetto nuovoMessaggio da pushare nell'array chat
         let nuovoMessaggio = {
           msg: this.messaggioScritto,
@@ -193,7 +194,7 @@ var app= new Vue({
     // funzione per riceve una risposta automatica
     rispostaAuto: function() {
 
-      let arrayRisposte=['ok','forse','si','non lo so'];
+      let arrayRisposte=['ciao','ok','forse','si','non lo so'];
       let stringa=arrayRisposte[Math.floor(Math.random()*arrayRisposte.length)];
       // creo il nuovo oggetto da pushare
       let nuovoMessaggio = {
@@ -204,7 +205,7 @@ var app= new Vue({
       // pusho l'oggetto nella chat attiva
       this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
       this.contact[this.contattoAttivo].ultimoAccesso=this.time();
-      this.contact[this.contattoAttivo].occupato=false;
+      this.contact[this.contattoAttivo].messaggioInviato=false;
 
       //scrollDown auto
       setTimeout(this.scrollDown,1);

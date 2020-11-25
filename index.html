@@ -92,10 +92,9 @@
             <div class="img-nome">
               <img :src="contact[contattoAttivo].img" alt="">
               <div class="nome-utente-lastseen">
-                <span>{{contact[contattoAttivo].name}}</span>
-                <br>
-                <span class="last-seen" v-if="contact[contattoAttivo].occupato==false" :class="'active'?last():''">Ultimo accesso il {{contact[contattoAttivo].ultimoAccesso}}</span>
-                <span class="last-seen" v-if="contact[contattoAttivo].occupato==true">Online</span>
+                <div>{{contact[contattoAttivo].name}}</div>
+                <span class="last-seen" v-if="contact[contattoAttivo].messaggioInviato==false" :class="'active'?last():''">Ultimo accesso il {{contact[contattoAttivo].ultimoAccesso}}</span>
+                <span class="last-seen" v-else-if="contact[contattoAttivo].messaggioInviato==true">Online</span>
               </div>
             </div>
 
