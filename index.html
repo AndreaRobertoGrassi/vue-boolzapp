@@ -119,7 +119,7 @@
                   <!-- dropdown per eliminare il messaggio -->
                   <i class="fas fa-angle-down dropdown" @mouseleave="leave()" @click="dropDown()">
                     <div v-show="contact[contattoAttivo].displayTendina" class="tendina">
-                      <div class="elimina" @click='removeMsg(i,item)'>
+                      <div class="elimina" @click='removeMsg(i)'>
                         {{elimina}}
                       </div>
                     </div>

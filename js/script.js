@@ -80,13 +80,6 @@ var app= new Vue({
       });
     },
 
-    //ultimo accesso
-    last:function () {
-      if (this.contact[this.contattoAttivo].libero==true && this.ultimoMsgEliminato==false) {
-        this.contact[this.contattoAttivo].ultimoAccesso=this.time();
-      }
-    },
-
     // funzione per selezionare la chat cliccata
     chatAttiva:function (i) {
       this.contattoAttivo=i;
@@ -123,6 +116,27 @@ var app= new Vue({
       }
     },
 
+    // funzione per riceve una risposta automatica
+    rispostaAuto: function() {
+
+      let arrayRisposte=['ciao','ok','forse','si','non lo so'];
+      let stringa=arrayRisposte[Math.floor(Math.random()*arrayRisposte.length)];
+      // creo il nuovo oggetto da pushare
+      let nuovoMessaggio = {
+        msg: stringa,
+        data: this.time(),
+        stato: 'ricevuto'
+      }
+      // pusho l'oggetto nella chat attiva
+      this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
+      this.contact[this.contattoAttivo].ultimoAccesso=this.time();
+      this.contact[this.contattoAttivo].messaggioInviato=false;
+
+      //scrollDown auto
+      setTimeout(this.scrollDown,1);
+
+    },
+
     // funzione per avere data e ora
     time: function() {
       let date = new Date();
@@ -144,25 +158,11 @@ var app= new Vue({
       return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
     },
 
-    // funzione per riceve una risposta automatica
-    rispostaAuto: function() {
-
-      let arrayRisposte=['ciao','ok','forse','si','non lo so'];
-      let stringa=arrayRisposte[Math.floor(Math.random()*arrayRisposte.length)];
-      // creo il nuovo oggetto da pushare
-      let nuovoMessaggio = {
-        msg: stringa,
-        data: this.time(),
-        stato: 'ricevuto'
+    //ultimo accesso
+    last:function () {
+      if (this.contact[this.contattoAttivo].libero==true && this.ultimoMsgEliminato==false) {
+        this.contact[this.contattoAttivo].ultimoAccesso=this.time();
       }
-      // pusho l'oggetto nella chat attiva
-      this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
-      this.contact[this.contattoAttivo].ultimoAccesso=this.time();
-      this.contact[this.contattoAttivo].messaggioInviato=false;
-
-      //scrollDown auto
-      setTimeout(this.scrollDown,1);
-
     },
 
     // funzione per eliminare il messaggio cliccato
