@@ -72,13 +72,13 @@
                 <img :src="item.img" alt="">
                 <div class="text">
                   <div class="utente-chat">{{item.name}}</div>
-                  <div class="last-msg" v-if="contact[contattoAttivo].libero==false">
+                  <div class="last-msg">
                     {{item.chat[item.chat.length-1].msg}}
                   </div>
                 </div>
               </div>
 
-              <div class="ora" v-if="contact[contattoAttivo].libero==false">{{item.chat[item.chat.length-1].data}}</div>
+              <div class="ora">{{item.chat[item.chat.length-1].data}}</div>
 
             </div>
 
@@ -95,8 +95,7 @@
               <img :src="contact[contattoAttivo].img" alt="">
               <div class="nome-utente-lastseen">
                 <div>{{contact[contattoAttivo].name}}</div>
-                <span class="last-seen" v-if="contact[contattoAttivo].messaggioInviato==false" :class="'active'?last():''">Ultimo accesso il {{contact[contattoAttivo].ultimoAccesso}}</span>
-                <span class="last-seen" v-else>{{online}}</span>
+                <span class="last-seen":class="'active'?last():''">{{contact[contattoAttivo].ultimoAccesso}}</span>
               </div>
             </div>
 
@@ -113,11 +112,11 @@
           <div class="message-page">
             <!-- aggiungo il messaggio scritto da input utente e da risposta automatica -->
             <div v-if="contact[contattoAttivo].libero==false" v-for="(item,i) in contact[contattoAttivo].chat"  :class="(item.stato=='inviato')?'sent':'received'">
-              <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'">
+              <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'" @mouseleave="leave()">
                 <div class="text-msg">
                   {{item.msg}}
                   <!-- dropdown per eliminare il messaggio -->
-                  <i class="fas fa-angle-down dropdown" @mouseleave="leave()" @click="dropDown()">
+                  <i class="fas fa-angle-down dropdown" @click="dropDown()">
                     <div v-show="contact[contattoAttivo].displayTendina" class="tendina">
                       <div class="elimina" @click='removeMsg(i)'>
                         {{elimina}}

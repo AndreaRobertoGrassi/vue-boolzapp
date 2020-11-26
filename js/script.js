@@ -10,6 +10,7 @@ var app= new Vue({
     elimina:'ELIMINA',  // elimina messaggio
     online:'Online',    //utente online
     ultimoMsgEliminato:false,   //se elimino tutti i messaggi mi resta comunque l'ultimo accesso
+    strUltimoAccesso:'Ultimo accesso il ',
     // contatti
     contact:[
 
@@ -129,7 +130,7 @@ var app= new Vue({
       }
       // pusho l'oggetto nella chat attiva
       this.contact[this.contattoAttivo].chat.push(nuovoMessaggio);
-      this.contact[this.contattoAttivo].ultimoAccesso=this.time();
+      this.contact[this.contattoAttivo].ultimoAccesso=this.strUltimoAccesso+this.time();
       this.contact[this.contattoAttivo].messaggioInviato=false;
 
       //scrollDown auto
@@ -161,7 +162,10 @@ var app= new Vue({
     //ultimo accesso
     last:function () {
       if (this.contact[this.contattoAttivo].libero==true && this.ultimoMsgEliminato==false) {
-        this.contact[this.contattoAttivo].ultimoAccesso=this.time();
+        this.contact[this.contattoAttivo].ultimoAccesso=this.strUltimoAccesso+this.time();
+      }
+      if (this.contact[this.contattoAttivo].messaggioInviato==true) {
+        this.contact[this.contattoAttivo].ultimoAccesso= this.online;
       }
     },
 
@@ -173,6 +177,7 @@ var app= new Vue({
       if (this.contact[this.contattoAttivo].chat.length==0) {
         this.contact[this.contattoAttivo].libero=true;
         this.ultimoMsgEliminato=true;
+        this.contact[this.contattoAttivo].chat.push({});
       }
     },
 

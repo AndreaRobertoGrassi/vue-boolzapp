@@ -158,7 +158,12 @@ input:focus{
 .profiles-chats .chat-friends .ora{
   margin: 10px 10px 0 0;
 }
-
+.profiles-chats .last-msg{
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 /* PAGE */
 #page{
@@ -207,7 +212,7 @@ input:focus{
 }
 #page .format{
   padding: 8px;
-  max-width: 40%;
+  max-width: 60%;
   border-radius: 8px;
   margin: 10px 0;
   min-width: 15%;
