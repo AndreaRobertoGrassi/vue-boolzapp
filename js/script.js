@@ -171,7 +171,6 @@ var app= new Vue({
       this.contact[this.contattoAttivo].chat.splice(i,1);
       //se devo rimuovere l'utlimo messaggio rimasto
       if (this.contact[this.contattoAttivo].chat.length==0) {
-        this.contact[this.contattoAttivo].chat.pop(i);
         this.contact[this.contattoAttivo].libero=true;
         this.ultimoMsgEliminato=true;
       }

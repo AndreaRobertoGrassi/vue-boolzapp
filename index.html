@@ -31,10 +31,12 @@
 
             <!-- my profile -->
             <div class="my-profile">
+              <!-- immagine profilo e nome -->
               <div class="img-nome">
                 <img :src="fotoProfilo" alt="">
                 <div>{{name}}</div>
               </div>
+              <!-- icone -->
               <div class="icon-my-profile">
                 <i class="fas fa-circle-notch"></i>
                 <i class="fas fa-comment-alt"></i>
@@ -64,7 +66,7 @@
 
           <!-- profile chat -->
           <div class="profiles-chats">
-
+            <!-- contatti chat -->
             <div class="chat-friends" v-show="item.display" v-for="(item,i) in contact" @click='chatAttiva(i)' :class="(contattoAttivo==i)?'active':'' ">
               <div class="img-nome-chat">
                 <img :src="item.img" alt="">
@@ -86,9 +88,9 @@
 
         <!-- corpo principale -->
         <div id="page">
-          <!-- header-chat-utente -->
+          <!-- sezione ultimo accesso -->
           <div class="header-chat-utente">
-
+            <!-- img, nome e ultimo accesso o online -->
             <div class="img-nome">
               <img :src="contact[contattoAttivo].img" alt="">
               <div class="nome-utente-lastseen">
@@ -98,6 +100,7 @@
               </div>
             </div>
 
+            <!-- icon sezione ultimoAccesso -->
             <div class="icon-header-chat-utente">
               <i class="fas fa-search"></i>
               <i class="fas fa-paperclip"></i>
@@ -108,10 +111,12 @@
 
           <!-- parte dei messaggi -->
           <div class="message-page">
+            <!-- aggiungo il messaggio scritto da input utente e da risposta automatica -->
             <div v-if="contact[contattoAttivo].libero==false" v-for="(item,i) in contact[contattoAttivo].chat"  :class="(item.stato=='inviato')?'sent':'received'">
               <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'">
                 <div class="text-msg">
                   {{item.msg}}
+                  <!-- dropdown per eliminare il messaggio -->
                   <i class="fas fa-angle-down dropdown" @mouseleave="leave()" @click="dropDown()">
                     <div v-show="contact[contattoAttivo].displayTendina" class="tendina">
                       <div class="elimina" @click='removeMsg(i,item)'>
@@ -120,6 +125,7 @@
                     </div>
                   </i>
                 </div>
+                <!-- orario messaggio -->
                 <div class="orario-msg">
                   {{item.data}}
                 </div>
