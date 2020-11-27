@@ -27,13 +27,13 @@
         <div id="left-bar">
 
           <!-- nav-aside -->
-          <div class="nav-aside">
+          <div class="nav-aside" :class="displayNavAside">
 
             <!-- my profile -->
             <div class="my-profile">
               <!-- immagine profilo e nome -->
               <div class="img-nome">
-                <img :src="fotoProfilo" alt="">
+                <img @click="dettagliProfilo()" :src="fotoProfilo" alt="">
                 <div>{{name}}</div>
               </div>
               <!-- icone -->
@@ -64,10 +64,50 @@
 
           </div>
 
+          <!-- modifica nome e stato del profilo -->
+          <div class="modifica-profilo" :class="modificaProfilo">
+
+            <div class="grey">
+              <i class="fas fa-arrow-left" @click="dettagliProfilo()"></i>
+              <h2>Profilo</h2>
+            </div>
+
+            <div class="img-modifica">
+              <img :src="fotoProfilo" alt="">
+            </div>
+
+            <div class="nome-info">
+
+              <div class="tuo-nome">Il tuo nome</div>
+
+              <!-- modificare il nome -->
+              <div class="modifica-nome" >
+                <span :class="classeModificaNome" @click="modificaNome()">{{name}}</span>
+                <i class="fas fa-pen" :class="classeModificaNome" @click="modificaNome()"></i>
+                <input v-model="inputModificaNome" @keydown.enter="nomeModificatoInserito()" :class="classeInputModificaNome" type="text" name="" value="" >
+                <i class="fas fa-check" :class="classeInputModificaNome" @click="nomeModificatoInserito()"></i>
+              </div>
+
+              <p>Questo non è il tuo nome utente o PIN. Questo nome sarà visivile ai tuoi contatti Boolzap.</p>
+              <span class="info">Info</span>
+
+              <!-- modificare lo stato -->
+              <div class="modifica-stato">
+                <span class="stato" :class="classeModificaStato" @click="modificaStato()">{{statoAccount}}</span>
+                <i class="fas fa-pen" :class="classeModificaStato" @click="modificaStato()"></i>
+                <input v-model="inputModificaStato" @keydown.enter="statoModificatoInserito()" :class="classeInputModificaStato" type="text" name="" value="">
+                <i class="fas fa-check" :class="classeInputModificaStato" @click="statoModificatoInserito()"></i>
+              </div>
+
+            </div>
+
+
+          </div>
+
           <!-- profile chat -->
-          <div class="profiles-chats">
+          <div class="profiles-chats" :class="displayNavAside">
             <!-- contatti chat -->
-            <div class="chat-friends" v-show="item.display" v-for="(item,i) in contact" @click='chatAttiva(i)' :class="(contattoAttivo==i)?'active':'' ">
+            <div class="chat-friends" v-show="item.display" v-for="(item,i) in contacts" @click='chatAttiva(i)' :class="(contattoAttivo==i)?'active':'' ">
               <div class="img-nome-chat">
                 <img :src="item.img" alt="">
                 <div class="text">
@@ -84,6 +124,7 @@
 
           </div>
 
+
         </div>
 
         <!-- corpo principale -->
@@ -92,10 +133,10 @@
           <div class="header-chat-utente">
             <!-- img, nome e ultimo accesso o online -->
             <div class="img-nome">
-              <img :src="contact[contattoAttivo].img" alt="">
+              <img :src="contacts[contattoAttivo].img" alt="">
               <div class="nome-utente-lastseen">
-                <div>{{contact[contattoAttivo].name}}</div>
-                <span class="last-seen":class="'active'?last():''">{{contact[contattoAttivo].ultimoAccesso}}</span>
+                <div>{{contacts[contattoAttivo].name}}</div>
+                <span class="last-seen":class="'active'?last():''">{{contacts[contattoAttivo].ultimoAccesso}}</span>
               </div>
             </div>
 
@@ -111,13 +152,13 @@
           <!-- parte dei messaggi -->
           <div class="message-page">
             <!-- aggiungo il messaggio scritto da input utente e da risposta automatica -->
-            <div v-if="contact[contattoAttivo].libero==false" v-for="(item,i) in contact[contattoAttivo].chat"  :class="(item.stato=='inviato')?'sent':'received'">
+            <div v-if="contacts[contattoAttivo].libero==false" v-for="(item,i) in contacts[contattoAttivo].chat"  :class="(item.stato=='inviato')?'sent':'received'">
               <div :class="(item.stato=='inviato')?'msg-green format':'msg-white format'" @mouseleave="leave()">
                 <div class="text-msg">
                   {{item.msg}}
                   <!-- dropdown per eliminare il messaggio -->
                   <i class="fas fa-angle-down dropdown" @click="dropDown()">
-                    <div v-show="contact[contattoAttivo].displayTendina" class="tendina">
+                    <div v-show="contacts[contattoAttivo].displayTendina" class="tendina">
                       <div class="elimina" @click='removeMsg(i)'>
                         {{elimina}}
                       </div>

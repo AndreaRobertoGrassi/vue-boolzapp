@@ -31,6 +31,12 @@ input:focus{
   font-size: 14px;
   color: grey;
 }
+.block{
+  display: block;
+}
+.none{
+  display: none;
+}
 /* SFONDO APP */
 #background-app{
   position: relative;
@@ -76,12 +82,66 @@ input:focus{
   display: flex;
   align-items: center;
 }
+.nav-aside .my-profile .img-nome img:hover{
+  cursor: pointer;
+}
 .nav-aside .icon-my-profile{
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100px;
 }
+/* modifica profilo */
+.modifica-profilo .grey{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: grey;
+  color: white;
+  height: 70px;
+}
+.modifica-profilo .grey i{
+  color: white;
+  margin-right:30px;
+}
+.modifica-profilo .img-modifica{
+  text-align: center;
+  margin: 15px 0;
+}
+.modifica-profilo .img-modifica img{
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+}
+.modifica-profilo .nome-info{
+  padding: 0 30px;
+}
+.modifica-profilo .nome-info .modifica-nome{
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
+.modifica-profilo .nome-info .modifica-nome span,.modifica-profilo .nome-info .modifica-stato span{
+  flex-grow: 1;
+}
+.modifica-profilo .nome-info p{
+  margin-bottom: 30px;
+}
+.modifica-profilo .nome-info .modifica-stato{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.modifica-profilo .nome-info input{
+  width: 70%;
+  height: 30px;
+  padding-left:10px;
+}
+
+
+
 
 /* notify */
 .nav-aside .notify{
