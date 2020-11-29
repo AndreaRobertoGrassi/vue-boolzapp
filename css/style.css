@@ -303,7 +303,10 @@ input:focus{
   display: block;
   position: relative;
 }
-#page .tendina{
+#page .format .dropdown:hover{
+  color: rgb(231, 85, 85);
+}
+#page .format .tendina{
   background-color: rgb(231, 85, 85);
   position: absolute;
   width: 100px;
